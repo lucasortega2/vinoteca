@@ -1,0 +1,99 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const wines = [
+  {
+    id: 1,
+    name: "Cabernet Sauvignon",
+    winery: "Château Excellence",
+    type: "red",
+    price: 49.99,
+    description: "Full-bodied with rich black fruit flavors",
+    image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3"
+  },
+  {
+    id: 2,
+    name: "Chardonnay Reserve",
+    winery: "Valley Vineyards",
+    type: "white",
+    price: 39.99,
+    description: "Buttery and oak-aged with vanilla notes",
+    image: "https://images.unsplash.com/photo-1569919659476-f0852f6834b7"
+  }
+];
+
+// Obtener el filtro de la URL
+const filter = Astro.url.searchParams.get('filter') || 'all';
+const filteredWines = filter === 'all' ? wines : wines.filter(wine => wine.type === filter);
+---
+
+<Layout title="Our Wines | Vinoteca Elegante">
+  <main class="container mx-auto px-6 py-12">
+    <h1 class="font-playfair text-4xl font-bold mb-8 mt-12">Our Wines</h1>
+    
+    <div class="flex space-x-4 mb-8">
+      <a
+        href="/vinos"
+        class={`px-4 py-2 rounded-full transition-colors ${
+          filter === 'all'
+            ? 'bg-wine text-white'
+            : 'bg-gray-100 hover:bg-gray-200'
+        }`}
+      >
+        All Wines
+      </a>
+      <a
+        href="/vinos?filter=red"
+        class={`px-4 py-2 rounded-full transition-colors ${
+          filter === 'red'
+            ? 'bg-wine text-white'
+            : 'bg-gray-100 hover:bg-gray-200'
+        }`}
+      >
+        Red Wines
+      </a>
+      <a
+        href="/vinos?filter=white"
+        class={`px-4 py-2 rounded-full transition-colors ${
+          filter === 'white'
+            ? 'bg-wine text-white'
+            : 'bg-gray-100 hover:bg-gray-200'
+        }`}
+      >
+        White Wines
+      </a>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {filteredWines.map((wine) => (
+        <div
+          class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
+        >
+          <div class="aspect-square relative overflow-hidden">
+            <img
+              src={wine.image}
+              alt={wine.name}
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="p-6">
+            <h2 class="font-playfair text-xl font-bold mb-1">{wine.name}</h2>
+            <p class="text-gray-600 text-sm mb-2">{wine.winery}</p>
+            <p class="text-gray-600 mb-4">{wine.description}</p>
+            <div class="flex items-center justify-between">
+              <span class="text-xl font-bold text-wine">${wine.price}</span>
+              <button
+                class="inline-flex items-center px-4 py-2 bg-wine text-white rounded-full hover:bg-wine/90 transition-colors duration-300"
+              >
+                Add to Cart
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="ml-2 w-5 h-5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </main>
+</Layout>

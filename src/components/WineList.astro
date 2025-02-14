@@ -1,0 +1,109 @@
+---
+const wines = [
+  {
+    id: 1,
+    name: "Cabernet Sauvignon",
+    winery: "Château Excellence",
+    type: "red",
+    price: 49.99,
+    description: "Full-bodied with rich black fruit flavors",
+    image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3"
+  },
+  {
+    id: 2,
+    name: "Chardonnay Reserve",
+    winery: "Valley Vineyards",
+    type: "white",
+    price: 39.99,
+    description: "Buttery and oak-aged with vanilla notes",
+    image: "https://images.unsplash.com/photo-1569919659476-f0852f6834b7"
+  }
+];
+
+const { activeFilter = 'all' } = Astro.props;
+const filteredWines = activeFilter === 'all' ? wines : wines.filter(wine => wine.type === activeFilter);
+---
+
+<div class="space-y-8">
+  <div class="flex gap-4">
+    <a 
+      href="/vinos" 
+      class={`px-4 py-2 rounded-full transition-colors ${
+        activeFilter === 'all'
+          ? 'bg-rose-900 text-white'
+          : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+      }`}
+    >
+      All Wines
+    </a>
+    <a 
+      href="/vinos?filter=red" 
+      class={`px-4 py-2 rounded-full transition-colors ${
+        activeFilter === 'red'
+          ? 'bg-rose-900 text-white'
+          : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+      }`}
+    >
+      Red Wines
+    </a>
+    <a 
+      href="/vinos?filter=white" 
+      class={`px-4 py-2 rounded-full transition-colors ${
+        activeFilter === 'white'
+          ? 'bg-rose-900 text-white'
+          : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+      }`}
+    >
+      White Wines
+    </a>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    {filteredWines.map((wine) => (
+      <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+        <div class="aspect-square relative overflow-hidden">
+          <img
+            src={wine.image}
+            alt={wine.name}
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div class="p-6">
+          <h2 class="font-playfair text-xl font-bold mb-1">{wine.name}</h2>
+          <p class="text-gray-600 text-sm mb-2">{wine.winery}</p>
+          <p class="text-gray-600 mb-4">{wine.description}</p>
+          <div class="flex items-center justify-between">
+            <span class="text-xl font-bold text-rose-900">${wine.price}</span>
+            <button
+              class="inline-flex items-center px-4 py-2 bg-rose-900 text-white rounded-full hover:bg-rose-800 transition-colors duration-300"
+            >
+              Add to Cart
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="ml-2 w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<script>
+  // Manejar el cambio de filtro
+  const updateFilter = () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const filter = urlParams.get('filter') || 'all';
+    document.querySelectorAll('[data-filter]').forEach(button => {
+      const buttonFilter = button.dataset.filter;
+      button.classList.toggle('bg-rose-900', buttonFilter === filter);
+      button.classList.toggle('text-white', buttonFilter === filter);
+      button.classList.toggle('bg-gray-100', buttonFilter !== filter);
+      button.classList.toggle('text-gray-600', buttonFilter !== filter);
+    });
+  };
+
+  // Actualizar filtros cuando cambie la URL
+  window.addEventListener('popstate', updateFilter);
+  updateFilter();
+</script>

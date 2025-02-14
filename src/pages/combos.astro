@@ -1,0 +1,74 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const combos = [
+  {
+    id: 1,
+    title: "Premium Red Collection",
+    description: "A curated selection of our finest red wines",
+    price: 199.99,
+    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+    wines: [
+      "Cabernet Sauvignon 2018",
+      "Malbec Reserva 2019",
+      "Pinot Noir 2020"
+    ]
+  },
+  {
+    id: 2,
+    title: "Summer Whites",
+    description: "Perfect wines for warm days",
+    price: 149.99,
+    image: "https://images.unsplash.com/photo-1482881497185-d4a9ddbe4151",
+    wines: [
+      "Chardonnay 2021",
+      "Sauvignon Blanc 2022",
+      "Pinot Grigio 2021"
+    ]
+  }
+];
+---
+
+<Layout title="Wine Combos | Vinoteca Elegante">
+  <main class="container mx-auto px-6 py-12">
+    <h1 class="font-playfair text-4xl font-bold mb-8 mt-12 ">Wine Combos</h1>
+    <div class="grid md:grid-cols-2 gap-8">
+      {combos.map((combo) => (
+        <div
+          class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
+        >
+          <div class="aspect-video relative overflow-hidden">
+            <img
+              src={combo.image}
+              alt={combo.title}
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="p-6">
+            <h2 class="font-playfair text-2xl font-bold mb-2">{combo.title}</h2>
+            <p class="text-gray-600 mb-4">{combo.description}</p>
+            <div class="space-y-2 mb-4">
+              <h3 class="font-semibold">Included Wines:</h3>
+              <ul class="list-disc list-inside text-gray-600">
+                {combo.wines.map((wine) => (
+                  <li>{wine}</li>
+                ))}
+              </ul>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-2xl font-bold text-wine">${combo.price}</span>
+              <button
+                class="inline-flex items-center px-4 py-2 bg-wine text-white rounded-full hover:bg-wine/90 transition-colors duration-300"
+              >
+                Add to Cart
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="ml-2 w-5 h-5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </main>
+</Layout>
