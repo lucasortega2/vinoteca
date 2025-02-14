@@ -1,41 +1,44 @@
 ---
+import { Image } from 'astro:assets';
+import premiumRed from '../assets/Premium Red Collection.jpg';
+import summer from '../assets/summer.jpg';
 const combos = [
   {
-    title: 'Premium Red Collection',
-    description: 'A curated selection of our finest red wines',
-    image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b',
-    price: 199.99,
-    includedWines: [
-      'Cabernet Sauvignon 2018',
-      'Malbec Reserva 2019',
-      'Pinot Noir 2020'
-    ]
+    title: 'Summer Combo',
+    image: premiumRed,
+    description: 'Great for summer',
+    price: 29.99,
+    includedWines: ['Red Wine', 'White Wine'],
   },
+
   {
     title: 'Summer Whites',
     description: 'Perfect wines for warm days',
-    image: 'https://images.unsplash.com/photo-1682686581030-7fa4ea2b96c3',
+    image: summer,
     price: 149.99,
     includedWines: [
       'Chardonnay 2021',
       'Sauvignon Blanc 2022',
-      'Pinot Grigio 2021'
-    ]
-  }
+      'Pinot Grigio 2021',
+    ],
+  },
 ];
 ---
 
 <div class="py-16 bg-white">
   <div class="container mx-auto px-4">
-    
-    <h2 class="text-4xl font-display text-center mb-12">Featured Wine Combos</h2>
-    
+    <h2 class="text-4xl font-display text-center mb-12">
+      Featured Wine Combos
+    </h2>
+
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       {
         combos.map((combo) => (
           <div class="bg-white rounded-3xl overflow-hidden shadow-lg">
             <div class="aspect-[4/3] overflow-hidden">
-              <img
+              <Image
+                width={400}
+                height={300}
                 src={combo.image}
                 alt={combo.title}
                 class="w-full h-full object-cover"
@@ -44,7 +47,7 @@ const combos = [
             <div class="p-8">
               <h3 class="text-2xl font-semibold mb-2">{combo.title}</h3>
               <p class="text-gray-600 mb-6">{combo.description}</p>
-              
+
               <div class="mb-6">
                 <h4 class="font-medium mb-2">Included Wines:</h4>
                 <ul class="space-y-1 text-gray-600">
@@ -58,14 +61,25 @@ const combos = [
                 <span class="text-rose-900 text-2xl font-semibold">
                   ${combo.price}
                 </span>
-                <button 
+                <button
                   class="bg-rose-900 text-white px-6 py-2.5 rounded-lg 
                          hover:bg-rose-800 active:bg-rose-950 transition-colors
                          flex items-center gap-2"
                 >
                   Add to Cart
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="w-5 h-5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                    />
                   </svg>
                 </button>
               </div>
@@ -74,15 +88,25 @@ const combos = [
         ))
       }
     </div>
-    
+
     <div class="text-center mt-12">
-      <a 
+      <a
         href="/combos"
         class="inline-flex items-center px-6 py-3 border-2 border-wine text-wine hover:bg-wine hover:text-white transition-all duration-300 rounded-full font-medium"
       >
         View All Combos
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-5 h-5"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
         </svg>
       </a>
     </div>

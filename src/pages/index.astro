@@ -1,36 +1,53 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import  SpecialCombos  from '../components/SpecialCombos.astro';
+import SpecialCombos from '../components/SpecialCombos.astro';
+import bgImage from '../assets/imagen-index.jpg';
 ---
 
 <Layout title="Vinoteca Elegante | Descubre el Arte del Vino">
   <div class="animate-fadeIn">
     <!-- Hero Section -->
-    <section class="relative h-[80vh] flex items-center justify-center overflow-hidden">
-      <div 
-        class="absolute inset-0 z-0"
-        style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb'); background-size: cover; background-position: center;"
+    <section
+      class="relative h-[80vh] flex items-center justify-center overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 z-0 bg-[url(../assets/imagen-index.jpg)] bg-cover"
+        
       >
         <div class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
       </div>
-      
+
       <div class="relative z-10 text-center text-white px-6">
-        <span class="inline-block mb-4 px-4 py-1 bg-wine/80 rounded-full text-sm backdrop-blur-sm animate-slideUp">
+        <span
+          class="inline-block mb-4 px-4 py-1 bg-wine/80 rounded-full text-sm backdrop-blur-sm animate-slideUp"
+        >
           Premium Wine Selection
         </span>
-        <h1 class="font-playfair text-5xl md:text-7xl font-bold mb-6 animate-slideUp">
+        <h1
+          class="font-playfair text-5xl md:text-7xl font-bold mb-6 animate-slideUp"
+        >
           Discover Exceptional Wines
         </h1>
         <p class="max-w-2xl mx-auto text-lg mb-8 animate-slideUp">
           Curated selection of the finest wines from around the world
         </p>
-        <a 
+        <a
           href="/vinos"
           class="inline-flex items-center px-6 py-3 bg-wine hover:bg-wine/90 transition-colors duration-300 rounded-full text-white font-medium animate-slideUp"
         >
           Explore Our Wines
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="ml-2 w-5 h-5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            class="ml-2 w-5 h-5"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
           </svg>
         </a>
       </div>
@@ -41,9 +58,11 @@ import  SpecialCombos  from '../components/SpecialCombos.astro';
       <div class="container mx-auto px-6">
         <div class="text-center mb-12">
           <span class="text-wine font-medium">Special Offers</span>
-          <h2 class="font-playfair text-4xl font-bold mt-2">Featured Wine Combos</h2>
+          <h2 class="font-playfair text-4xl font-bold mt-2">
+            Featured Wine Combos
+          </h2>
         </div>
-        
+
         <SpecialCombos />
       </div>
     </section>
@@ -52,13 +71,27 @@ import  SpecialCombos  from '../components/SpecialCombos.astro';
     <section class="py-20">
       <div class="container mx-auto px-6">
         <div class="max-w-3xl mx-auto text-center">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-auto h-12 w-12 text-wine mb-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 1-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="mx-auto h-12 w-12 text-wine mb-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 1-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"
+            ></path>
           </svg>
-          <h2 class="font-playfair text-4xl font-bold mb-6">Our Quality Promise</h2>
+          <h2 class="font-playfair text-4xl font-bold mb-6">
+            Our Quality Promise
+          </h2>
           <p class="text-gray-600 leading-relaxed">
-            We carefully select each wine in our collection, ensuring that every bottle meets our high standards of quality. 
-            Our team of experts tastes and evaluates each wine before it reaches our shelves, 
+            We carefully select each wine in our collection, ensuring that every
+            bottle meets our high standards of quality. Our team of experts
+            tastes and evaluates each wine before it reaches our shelves,
             guaranteeing that you'll receive only the finest selections.
           </p>
         </div>
@@ -69,16 +102,20 @@ import  SpecialCombos  from '../components/SpecialCombos.astro';
 
 <style>
   @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 
   @keyframes slideUp {
-    from { 
+    from {
       opacity: 0;
       transform: translateY(20px);
     }
-    to { 
+    to {
       opacity: 1;
       transform: translateY(0);
     }

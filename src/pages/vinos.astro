@@ -1,15 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import cabernetSauvignon from '../assets/cabernet-sauvignon.jpg';
+import chateauExcellence from '../assets/Chardonnay reserve.jpg';
 
 const wines = [
   {
     id: 1,
     name: "Cabernet Sauvignon",
-    winery: "Château Excellence",
+    winery: "Chateau Excellence",
     type: "red",
     price: 49.99,
     description: "Full-bodied with rich black fruit flavors",
-    image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3"
+    image: cabernetSauvignon
   },
   {
     id: 2,
@@ -18,7 +21,7 @@ const wines = [
     type: "white",
     price: 39.99,
     description: "Buttery and oak-aged with vanilla notes",
-    image: "https://images.unsplash.com/photo-1569919659476-f0852f6834b7"
+    image: chateauExcellence
   }
 ];
 
@@ -70,7 +73,7 @@ const filteredWines = filter === 'all' ? wines : wines.filter(wine => wine.type 
           class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
         >
           <div class="aspect-square relative overflow-hidden">
-            <img
+            <Image
               src={wine.image}
               alt={wine.name}
               class="w-full h-full object-cover"
