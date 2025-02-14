@@ -1,5 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import cabernetSauvignon from '../assets/cabernet-sauvignon.jpg';
+import chardonnayReserve from '../assets/chardonnay-reserve.jpg';
 
 const combos = [
   {
@@ -7,7 +10,7 @@ const combos = [
     title: "Premium Red Collection",
     description: "A curated selection of our finest red wines",
     price: 199.99,
-    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+    image: cabernetSauvignon,
     wines: [
       "Cabernet Sauvignon 2018",
       "Malbec Reserva 2019",
@@ -19,7 +22,7 @@ const combos = [
     title: "Summer Whites",
     description: "Perfect wines for warm days",
     price: 149.99,
-    image: "https://images.unsplash.com/photo-1482881497185-d4a9ddbe4151",
+    image: chardonnayReserve,
     wines: [
       "Chardonnay 2021",
       "Sauvignon Blanc 2022",
@@ -38,7 +41,7 @@ const combos = [
           class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
         >
           <div class="aspect-video relative overflow-hidden">
-            <img
+            <Image
               src={combo.image}
               alt={combo.title}
               class="w-full h-full object-cover"
