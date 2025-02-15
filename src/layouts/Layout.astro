@@ -3,7 +3,7 @@ import '@fontsource/playfair-display';
 import '@fontsource/raleway';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 interface Props {
   title: string;
@@ -18,14 +18,14 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta
       name="description"
-      content="Vinoteca Elegante - Tu destino para los mejores vinos"
+      content="Vinoteca Nexus - Tu destino para los mejores vinos"
     />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title} | Vinoteca Elegante</title>
+    <title>{title} | Vinoteca Nexus</title>
     
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body class="min-h-screen bg-white">
     <Navigation />

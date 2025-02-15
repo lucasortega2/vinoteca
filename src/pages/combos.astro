@@ -1,16 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
-import cabernetSauvignon from '../assets/cabernet-sauvignon.jpg';
-import chardonnayReserve from '../assets/chardonnay-reserve.jpg';
+import PremiumRedCollection from '../assets/premium-red-collection.jpg';
+import SummerWhites from '../assets/summer-Whites.jpg';
 
 const combos = [
   {
     id: 1,
     title: "Premium Red Collection",
     description: "A curated selection of our finest red wines",
-    price: 199.99,
-    image: cabernetSauvignon,
+    price: 29.99,
+    image: PremiumRedCollection,
     wines: [
       "Cabernet Sauvignon 2018",
       "Malbec Reserva 2019",
@@ -21,8 +21,8 @@ const combos = [
     id: 2,
     title: "Summer Whites",
     description: "Perfect wines for warm days",
-    price: 149.99,
-    image: chardonnayReserve,
+    price: 59.99,
+    image: SummerWhites,
     wines: [
       "Chardonnay 2021",
       "Sauvignon Blanc 2022",
@@ -42,13 +42,14 @@ const combos = [
         >
           <div class="aspect-video relative overflow-hidden">
             <Image
+              transition:name={`image-${combo.title}`}
               src={combo.image}
               alt={combo.title}
               class="w-full h-full object-cover"
             />
           </div>
           <div class="p-6">
-            <h2 class="font-playfair text-2xl font-bold mb-2">{combo.title}</h2>
+            <h2 transition:name={`title-${combo.title}`} class="font-playfair text-2xl font-bold mb-2">{combo.title}</h2>
             <p class="text-gray-600 mb-4">{combo.description}</p>
             <div class="space-y-2 mb-4">
               <h3 class="font-semibold">Included Wines:</h3>
