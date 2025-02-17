@@ -98,37 +98,39 @@ const isActive = (href: string) => {
     </div>
   </nav>
 </header>
-<script>
-  const menuButton = document.getElementById('menuButton');
-  const mobileMenu = document.getElementById('mobileMenu');
-  
-  if (menuButton && mobileMenu) {
-    menuButton.addEventListener('click', () => {
-      const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
-      menuButton.setAttribute('aria-expanded', (!isExpanded).toString());
-      
-      if (isExpanded) {
-        mobileMenu.classList.add('hidden');
-        mobileMenu.classList.remove('opacity-100', 'scale-y-100');
-        mobileMenu.classList.add('opacity-0', 'scale-y-95');
-      } else {
-        mobileMenu.classList.remove('hidden');
-        setTimeout(() => {
-          mobileMenu.classList.remove('opacity-0', 'scale-y-95');
-          mobileMenu.classList.add('opacity-100', 'scale-y-100');
-        }, 0);
-      }
-    });
+<script is:inline>
+  function setupMobileMenu() {
+    const menuButton = document.getElementById('menuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    if (menuButton && mobileMenu && menuButton.parentNode) {
+      // Remove any existing event listeners
+      const newMenuButton = menuButton.cloneNode(true);
+      menuButton.parentNode.replaceChild(newMenuButton, menuButton);
+      newMenuButton.addEventListener('click', () => {
+        const isExpanded = newMenuButton.getAttribute('aria-expanded') === 'true';
+        newMenuButton.setAttribute('aria-expanded', (!isExpanded).toString());
+        
+        if (isExpanded) {
+          mobileMenu.classList.add('hidden');
+          mobileMenu.classList.remove('opacity-100', 'scale-y-100');
+          mobileMenu.classList.add('opacity-0', 'scale-y-95');
+        } else {
+          mobileMenu.classList.remove('hidden');
+          setTimeout(() => {
+            mobileMenu.classList.remove('opacity-0', 'scale-y-95');
+            mobileMenu.classList.add('opacity-100', 'scale-y-100');
+          }, 0);
+        }
+      });
+    }
   }
+  // Setup on initial load
+  setupMobileMenu();
+  // Setup on view transitions
+  document.addEventListener('astro:page-load', () => {
+    setupMobileMenu();
+  });
 </script>
+
 <style>
-  #mobileMenu {
-    opacity: 0;
-    transform: scaleY(0.95);
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-  }
-  #mobileMenu.opacity-100 {
-    opacity: 1;
-    transform: scaleY(1);
-  }
-</style>
