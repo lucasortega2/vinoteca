@@ -1,7 +1,6 @@
 ---
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
-import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 interface Props {
   title: string;
@@ -23,7 +22,7 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title} | Vinoteca Nexus</title>
     
-    <ClientRouter />
+    
   </head>
   <body class="min-h-screen bg-white">
     <Navigation />
