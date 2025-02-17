@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "Vinoteca Nexus",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -9,8 +9,6 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@fontsource/playfair-display": "^5.1.1",
-    "@fontsource/raleway": "^5.1.1",
     "@tailwindcss/vite": "^4.0.6",
     "astro": "^5.3.0",
     "tailwindcss": "^4.0.6"

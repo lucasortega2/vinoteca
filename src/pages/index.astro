@@ -1,39 +1,40 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import SpecialCombos from '../components/SpecialCombos.astro';
-
+import SpecialWines from '../components/SpecialWines.astro';
 ---
 
 <Layout title="Vinoteca Nexus | Descubre el Arte del Vino">
   <div class="animate-fadeIn">
     <!-- Hero Section -->
-    <section
-      class="relative h-[80vh] flex items-center justify-center overflow-hidden"
-    >
-      <div
-        class="absolute inset-0 z-0 bg-[url(../assets/imagen-index.jpg)] bg-cover  bg-[50%_55%]"
-         
-      >
-        <div class="absolute inset-0 bg-black/40 "></div>
+    <section class="relative h-[80vh] flex items-center justify-center overflow-hidden">
+      <div class=" absolute inset-0 z-0 bg-[url(../assets/imagen-index.jpg)] bg-cover bg-[50%_100%]">
+        <div class="absolute inset-0 bg-black/40"></div>
       </div>
-
+    
       <div class="relative z-10 text-center text-white px-6">
         <span
-          class="inline-block mb-4 px-4 py-1 bg-wine/80 rounded-full text-sm backdrop-blur-sm animate-slideUp"
+          class="inline-block mb-4 px-4 py-1 bg-wine/80 rounded-full text-sm backdrop-blur-sm opacity-0 animate-[slideUp_0.6s_ease-out_forwards]"
+          style="animation-delay: 0.2s"
         >
           Premium Wine Selection
         </span>
         <h1
-          class="font-playfair text-5xl md:text-7xl font-bold mb-6 animate-slideUp"
+          class="text-5xl md:text-7xl  mb-6 opacity-0 animate-[slideUp_0.6s_ease-out_forwards]"
+          style="animation-delay: 0.4s"
         >
           Discover Exceptional Wines
         </h1>
-        <p class="max-w-2xl mx-auto text-lg mb-8 animate-slideUp">
+        <p
+          class="max-w-2xl mx-auto text-lg mb-8 opacity-0 animate-[slideUp_0.6s_ease-out_forwards]"
+          style="animation-delay: 0.6s"
+        >
           Curated selection of the finest wines from around the world
         </p>
         <a
           href="/vinos"
-          class="inline-flex items-center px-6 py-3 bg-wine hover:bg-wine/90 transition-colors duration-300 rounded-full text-white font-medium animate-slideUp"
+          class="inline-flex items-center px-6 py-3 bg-wine hover:bg-wine/90 transition-colors duration-300 rounded-full text-white font-medium opacity-0 animate-[slideUp_0.6s_ease-out_forwards]"
+          style="animation-delay: 0.8s"
         >
           Explore Our Wines
           <svg
@@ -44,14 +45,12 @@ import SpecialCombos from '../components/SpecialCombos.astro';
             stroke="currentColor"
             class="ml-2 w-5 h-5"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
           </svg>
         </a>
       </div>
     </section>
+    
 
     <!-- Featured Combos Section -->
     <section class="py-20 bg-cream">
@@ -61,9 +60,14 @@ import SpecialCombos from '../components/SpecialCombos.astro';
           <h2 class="font-playfair text-4xl font-bold mt-2">
             Featured Wine Combos
           </h2>
+          <p class="text-gray-600 mt-4">
+            Discover our carefully curated wine combos that combine the best of
+            different regions and styles.
+          </p>
         </div>
-
+        
         <SpecialCombos />
+        <SpecialWines/>
       </div>
     </section>
 
@@ -100,32 +104,4 @@ import SpecialCombos from '../components/SpecialCombos.astro';
   </div>
 </Layout>
 
-<style>
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
 
-  @keyframes slideUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-fadeIn {
-    animation: fadeIn 1s ease-out;
-  }
-
-  .animate-slideUp {
-    animation: slideUp 0.5s ease-out forwards;
-  }
-</style>

@@ -77,10 +77,11 @@ const filteredWines = filter === 'all' ? wines : wines.filter(wine => wine.type 
               src={wine.image}
               alt={wine.name}
               class="w-full h-full object-cover"
+              transition:name={`image-${wine.name}`}
             />
           </div>
           <div class="p-6">
-            <h2 class="font-playfair text-xl font-bold mb-1">{wine.name}</h2>
+            <h2 transition:name={`wine-${wine.name}`} class="font-playfair text-xl font-bold mb-1">{wine.name} </h2>
             <p class="text-gray-600 text-sm mb-2">{wine.winery}</p>
             <p class="text-gray-600 mb-4">{wine.description}</p>
             <div class="flex items-center justify-between">
