@@ -6,8 +6,12 @@ const links = [
   { text: 'Contacto', href: '/contacto' },
 ];
 const currentPath = Astro.url.pathname.replace(/\/$/, '');
-
-
+const isActive = (href: string) => {
+  if (href === '/') {
+    return currentPath === '';
+  }
+  return currentPath.startsWith(href);
+};
 
 ---
 <header class="fixed w-full backdrop-blur-md z-50 border-b border-gray-100 bg-cream/80 " >
@@ -32,7 +36,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '');
                 'after:absolute after:left-0 after:bottom-0',
                 'after:h-0.5 after:bg-rose-500/80',
                 'after:transition-all after:duration-300',
-                currentPath === link.href 
+                isActive(link.href)
                   ? 'text-rose-600 after:w-full' 
                   : 'after:w-0 hover:after:w-full'
               ]}
