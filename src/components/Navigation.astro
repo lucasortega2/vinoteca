@@ -12,17 +12,19 @@ const isActive = (href: string) => {
   }
   return currentPath.startsWith(href);
 };
-
 ---
-<header class="fixed w-full backdrop-blur-md z-50 border-b border-gray-100 bg-cream/80 " >
+
+<header
+  class="fixed w-full backdrop-blur-md z-50 border-b border-gray-100 bg-cream/80"
+>
   <nav class="container px-4 py-4 mx-auto">
     <div class="flex justify-between items-center">
       <!-- Logo -->
-      <a 
-        href="/" 
+      <a
+        href="/"
         class="text-2xl text-rose-600 hover:text-rose-700 transition-all duration-300 hover:scale-[1.02]"
       >
-        Vinoteca Elegante
+        Vinoteca Nexus
       </a>
       <!-- Desktop Navigation -->
       <div class="hidden md:flex items-center gap-8">
@@ -37,8 +39,8 @@ const isActive = (href: string) => {
                 'after:h-0.5 after:bg-rose-500/80',
                 'after:transition-all after:duration-300',
                 isActive(link.href)
-                  ? 'text-rose-600 after:w-full' 
-                  : 'after:w-0 hover:after:w-full'
+                  ? 'text-rose-600 after:w-full'
+                  : 'after:w-0 hover:after:w-full',
               ]}
             >
               {link.text}
@@ -47,7 +49,7 @@ const isActive = (href: string) => {
         }
       </div>
       <!-- Mobile Menu Button -->
-      <button 
+      <button
         id="menuButton"
         class="md:hidden p-2 text-rose-600 hover:bg-rose-50 rounded-lg transition-all duration-300
                hover:scale-105 active:scale-95"
@@ -65,14 +67,13 @@ const isActive = (href: string) => {
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
-            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-          />
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
         </svg>
       </button>
     </div>
     <!-- Mobile Menu -->
-    <div 
-      id="mobileMenu" 
+    <div
+      id="mobileMenu"
       class="hidden md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-md
              border-b border-gray-100 shadow-lg transform origin-top
              transition-all duration-300 ease-in-out"
@@ -87,7 +88,7 @@ const isActive = (href: string) => {
                 'hover:bg-rose-50 hover:scale-[1.01]',
                 currentPath === link.href
                   ? 'bg-rose-50 text-rose-600'
-                  : 'text-gray-600 hover:text-rose-600'
+                  : 'text-gray-600 hover:text-rose-600',
               ]}
             >
               {link.text}
@@ -102,15 +103,16 @@ const isActive = (href: string) => {
   function setupMobileMenu() {
     const menuButton = document.getElementById('menuButton');
     const mobileMenu = document.getElementById('mobileMenu');
-    
+
     if (menuButton && mobileMenu && menuButton.parentNode) {
       // Remove any existing event listeners
       const newMenuButton = menuButton.cloneNode(true);
       menuButton.parentNode.replaceChild(newMenuButton, menuButton);
       newMenuButton.addEventListener('click', () => {
-        const isExpanded = newMenuButton.getAttribute('aria-expanded') === 'true';
+        const isExpanded =
+          newMenuButton.getAttribute('aria-expanded') === 'true';
         newMenuButton.setAttribute('aria-expanded', (!isExpanded).toString());
-        
+
         if (isExpanded) {
           mobileMenu.classList.add('hidden');
           mobileMenu.classList.remove('opacity-100', 'scale-y-100');
@@ -133,4 +135,4 @@ const isActive = (href: string) => {
   });
 </script>
 
-<style>
+<style></style>

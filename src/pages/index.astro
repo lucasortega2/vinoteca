@@ -7,11 +7,15 @@ import SpecialWines from '../components/SpecialWines.astro';
 <Layout title="Vinoteca Nexus | Descubre el Arte del Vino">
   <div class="animate-fadeIn">
     <!-- Hero Section -->
-    <section class="relative h-[80vh] flex items-center justify-center overflow-hidden">
-      <div class=" absolute inset-0 z-0 bg-[url(../assets/imagen-index.jpg)] bg-cover bg-no-repeat bg-[50%_60%]">
+    <section
+      class="relative h-[60vh] flex items-center justify-center overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 z-0 bg-[url(../assets/imagen-index.jpg)] bg-cover bg-no-repeat bg-[50%_70%]"
+      >
         <div class="absolute inset-0 bg-black/40"></div>
       </div>
-    
+
       <div class="relative z-10 text-center text-white px-6">
         <span
           class="inline-block mb-4 px-4 py-1 bg-wine/80 rounded-full text-sm backdrop-blur-sm opacity-0 animate-[slideUp_0.6s_ease-out_forwards]"
@@ -20,7 +24,7 @@ import SpecialWines from '../components/SpecialWines.astro';
           Premium Wine Selection
         </span>
         <h1
-          class="text-4xl md:text-5xl  mb-6 opacity-0 animate-[slideUp_0.6s_ease-out_forwards]"
+          class="text-4xl md:text-5xl mb-6 opacity-0 animate-[slideUp_0.6s_ease-out_forwards]"
           style="animation-delay: 0.4s"
         >
           Discover Exceptional Wines
@@ -45,18 +49,20 @@ import SpecialWines from '../components/SpecialWines.astro';
             stroke="currentColor"
             class="ml-2 w-5 h-5"
           >
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
           </svg>
         </a>
       </div>
     </section>
-    
 
     <!-- Featured Combos Section -->
     <section class="py-20 bg-cream">
       <div class="container mx-auto px-6">
         <SpecialCombos />
-        <SpecialWines/>
+        <SpecialWines />
       </div>
     </section>
 
@@ -92,5 +98,3 @@ import SpecialWines from '../components/SpecialWines.astro';
     </section>
   </div>
 </Layout>
-
-
